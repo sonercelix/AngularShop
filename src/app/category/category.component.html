@@ -1,0 +1,10 @@
+<h3 *ngIf="categories; else noCategory"></h3>
+
+<ng-template #noCategory>
+  Kategori bulunamadı
+</ng-template>
+
+<div class="list-group">
+  <li class="list-group-item active list-group-item-action">Tüm ürünler</li>
+  <a *ngFor="let category of categories" class="list-group-item list-group-item-action" href="#">{{category.Name}}</a>
+</div>
