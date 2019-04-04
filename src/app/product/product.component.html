@@ -1,8 +1,6 @@
-<h3 *ngIf="products; else noProduct">{{ title }}</h3>
-
+<h3 *ngIf="products.length>0; else noProduct">{{ title }}</h3>
 <div class="form-group">
-  <input  class="form-control" id="inputProductName"  placeholder="Ürün ara"
-  [(ngModel)]="filterText">
+  <input class="form-control" id="inputProductName" placeholder="Ürün ara" [(ngModel)]="filterText">
   <small *ngIf="filterText;" id="emailHelp" class="form-text text-muted">
     Şu an <label style="color:red; font-weight:bold;"> {{ filterText }} </label> anahtar sözcüğü ile arama yapıyorsunuz
   </small>
@@ -14,6 +12,7 @@
   </div>
 </ng-template>
 
+
 <div class="row">
   <div *ngFor="let product of products | productFilter:filterText" class="card" style="width: 18rem;">
     <a href="/">
@@ -21,7 +20,7 @@
     </a>
     <div class="card-body">
       <h5 class="card-title">{{ product.Name }}</h5>
-      <p class="card-text">{{ product.Description }} - {{ product.Price }} TL  </p>
+      <p class="card-text">{{ product.Description }} - {{ product.Price }} TL </p>
       <a (click)="addToCart(product)" class="btn btn-primary">Sepete Ekle</a>
     </div>
   </div>

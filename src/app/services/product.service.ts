@@ -14,9 +14,13 @@ export class ProductService {
 
   getProducts(categoryId:number): Observable<Product[]> {
 
-    console.log(categoryId);
+    let lastPath = this.path;
+    if(categoryId)
+    {
+      lastPath += "?CategoryId="+categoryId
+    }
 
-    return this.http.get<Product[]>(this.path + "?CategoryId="+categoryId).pipe(
+    return this.http.get<Product[]>(lastPath).pipe(
       tap(data => {
         //console.log(JSON.stringify(data))
       }),
